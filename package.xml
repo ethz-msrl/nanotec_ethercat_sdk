@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>nanotec_ethercat_sdk</name>
+  <version>1.0.1</version>
+  <description>Nanotec Ethercat implementation.</description>
+  
+  <license>BSD-3-Clause</license>
+  <author email="cehmke@student.ethz.ch">Claas Ehmke</author>
+  <maintainer email="cehmke@student.ethz.ch">Claas Ehmke</maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>message_logger</depend>
+  <depend>ethercat_motor_msgs</depend>
+  <depend>soem_interface</depend>
+  <depend>yaml-cpp</depend>
+  <depend>ethercat_sdk_master</depend>
+  
+</package>
