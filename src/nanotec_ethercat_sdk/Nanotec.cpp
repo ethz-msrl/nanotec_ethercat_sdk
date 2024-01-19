@@ -76,6 +76,32 @@ bool Nanotec::startup() {
     }
   }
 
+  // Before disabling the brake, for the sake of safety, we set the position 
+  // velocity, and torques to current values; and offsets to 0. Not doing this
+  // may for e.g.: lead to quick rush to 0 position when master code is started
+  // since all the PDO structs will contain a default of 0.
+  bool readSuccess = true;
+  int32_t current_position;
+  readSuccess &= sendSdoRead(OD_INDEX_POSITION_ACTUAL, 0, false, current_position);
+  stagedCommand_.setTargetPositionRaw(current_position);
+  reading_.setActualPosition(current_position);
+  stagedCommand_.setPositionOffsetRaw(0);
+  int32_t current_velocity;
+  readSuccess &= sendSdoRead(OD_INDEX_VELOCITY_ACTUAL, 0, false, current_velocity);
+  stagedCommand_.setTargetVelocityRaw(current_velocity);
+  reading_.setActualVelocity(current_velocity);
+  stagedCommand_.setVelocityOffsetRaw(0);
+  int16_t current_torque;
+  readSuccess &= sendSdoRead(OD_INDEX_TORQUE_ACTUAL, 0, false, current_torque);
+  stagedCommand_.setTargetTorqueRaw(current_torque);
+  reading_.setActualTorque(current_torque);
+  stagedCommand_.setTorqueOffsetRaw(0);
+  if(!readSuccess){
+    MELO_ERROR("[nanotec_ethercat_sdk:Nanotec::startup] Reading current position, velocity, and torque failed! Aborting startup sequence.");
+    addErrorToReading(ErrorType::ConfigurationError);
+    return false;
+  }
+
   //disable brake
   success &= sdoVerifyWrite(OD_INDEX_DIGITAL_OUTPUTS, 0x01, false,
                   0x00000000,
