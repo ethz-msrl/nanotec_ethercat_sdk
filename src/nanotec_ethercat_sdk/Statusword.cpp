@@ -1,11 +1,5 @@
 #include "nanotec_ethercat_sdk/Statusword.hpp"
-#include <ros/ros.h>
-
-#define LOG(format, ...) ROS_INFO("[STATUSWORD] " format, ##__VA_ARGS__)
-#define LOG_STREAM(format, ...) ROS_INFO_STREAM("[STATUSWORD] " << format, ##__VA_ARGS__)
-#define LOG_WARN(format, ...) ROS_WARN("[STATUSWORD] " format, ##__VA_ARGS__)
-#define LOG_ERROR(format, ...) ROS_ERROR("[STATUSWORD] " format, ##__VA_ARGS__)
-#define LOG_ERROR_STREAM(format, ...) ROS_ERROR_STREAM("[STATUSWORD] " << format, ##__VA_ARGS__)
+#include "message_logger/message_logger.hpp"
 
 namespace nanotec {
 std::ostream& operator<<(std::ostream& os, const Statusword& statusword) { //DONE
@@ -124,7 +118,7 @@ DriveState Statusword::getDriveState() const {
     driveState = DriveState::Fault;
     //LOG("Current Drivestate: Fault");
   }else {
-    LOG_ERROR("Current Drivestate: NA");
+    MELO_ERROR("Current Drivestate: NA");
   }
 
   return driveState;

@@ -1,19 +1,14 @@
 
 #pragma once
 #include "nanotec_ethercat_sdk/Configuration.hpp"
+#include "message_logger/message_logger.hpp"
 
 #include <iomanip>
 #include <vector>
 #include <map>
 #include <algorithm>
 #include <utility>
-#include <ros/ros.h>
 
-#define LOG(format, ...) ROS_INFO("[CONFIGURATION] " format, ##__VA_ARGS__)
-#define LOG_STREAM(format, ...) ROS_INFO_STREAM("[CONFIGURATION] " << format, ##__VA_ARGS__)
-#define LOG_WARN(format, ...) ROS_WARN("[CONFIGURATION] " format, ##__VA_ARGS__)
-#define LOG_ERROR(format, ...) ROS_ERROR("[CONFIGURATION] " format, ##__VA_ARGS__)
-#define LOG_ERROR_STREAM(format, ...) ROS_ERROR_STREAM("[CONFIGURATION] " << format, ##__VA_ARGS__)
 
 namespace nanotec {
 
@@ -246,7 +241,7 @@ bool Configuration::sanityCheck(bool silent) const {
   std::for_each(sanity_tests.begin(), sanity_tests.end(), check_and_inform);
 
   if (!silent) {
-   LOG_STREAM(message);
+   MELO_INFO_STREAM(message);
   }
   return success;
 }

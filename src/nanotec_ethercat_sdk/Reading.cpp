@@ -2,13 +2,6 @@
 #include <cmath>
 
 #include "nanotec_ethercat_sdk/Reading.hpp"
-#include <ros/ros.h>
-
-#define LOG(format, ...) ROS_INFO("[READING] " format, ##__VA_ARGS__)
-#define LOG_STREAM(format, ...) ROS_INFO_STREAM("[READING] " << format, ##__VA_ARGS__)
-#define LOG_WARN(format, ...) ROS_WARN("[READING] " format, ##__VA_ARGS__)
-#define LOG_ERROR(format, ...) ROS_ERROR("[READING] " format, ##__VA_ARGS__)
-#define LOG_ERROR_STREAM(format, ...) ROS_ERROR_STREAM("[READING] " << format, ##__VA_ARGS__)
 
 
 
