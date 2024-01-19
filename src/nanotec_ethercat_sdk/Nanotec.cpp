@@ -86,16 +86,17 @@ bool Nanotec::startup() {
   stagedCommand_.setTargetPositionRaw(current_position);
   reading_.setActualPosition(current_position);
   stagedCommand_.setPositionOffsetRaw(0);
-  int32_t current_velocity;
-  readSuccess &= sendSdoRead(OD_INDEX_VELOCITY_ACTUAL, 0, false, current_velocity);
-  stagedCommand_.setTargetVelocityRaw(current_velocity);
-  reading_.setActualVelocity(current_velocity);
-  stagedCommand_.setVelocityOffsetRaw(0);
-  int16_t current_torque;
-  readSuccess &= sendSdoRead(OD_INDEX_TORQUE_ACTUAL, 0, false, current_torque);
-  stagedCommand_.setTargetTorqueRaw(current_torque);
-  reading_.setActualTorque(current_torque);
-  stagedCommand_.setTorqueOffsetRaw(0);
+  /* Velocity and Torque zeroed at startup, uncomment to hold at startup */
+  // int32_t current_velocity;
+  // readSuccess &= sendSdoRead(OD_INDEX_VELOCITY_ACTUAL, 0, false, current_velocity);
+  // stagedCommand_.setTargetVelocityRaw(0);
+  // reading_.setActualVelocity(current_velocity);
+  // stagedCommand_.setVelocityOffsetRaw(0);
+  // int16_t current_torque;
+  // readSuccess &= sendSdoRead(OD_INDEX_TORQUE_ACTUAL, 0, false, current_torque);
+  // stagedCommand_.setTargetTorqueRaw(current_torque);
+  // reading_.setActualTorque(current_torque);
+  // stagedCommand_.setTorqueOffsetRaw(0);
   if(!readSuccess){
     MELO_ERROR("[nanotec_ethercat_sdk:Nanotec::startup] Reading current position, velocity, and torque failed! Aborting startup sequence.");
     addErrorToReading(ErrorType::ConfigurationError);
