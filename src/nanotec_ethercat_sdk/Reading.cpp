@@ -106,6 +106,14 @@ double Reading::getBusVoltage() const {
   return 0.001 * static_cast<double>(busVoltage_);
 }
 
+uint16_t Reading::getErrorCode() const {
+  return errorCode_;
+}
+
+uint8_t Reading::getErrorRegister() const {
+  return errorRegister_;
+}
+
 /*!
  * Raw set methods
  */
@@ -155,6 +163,14 @@ void Reading::setCurrentFactorIntegerToAmp(double currentFactor) {
 }
 void Reading::setTorqueFactorIntegerToNm(double torqueFactor) {
   torqueFactorIntegerToNm_ = torqueFactor;
+}
+
+void Reading::setErrorCode(uint16_t errorCode){
+  errorCode_ = errorCode;
+}
+
+void Reading::setErrorRegister(uint8_t errorRegister){
+  errorRegister_ = errorRegister;
 }
 
 double Reading::getAgeOfLastErrorInMicroseconds() const {

@@ -394,12 +394,14 @@ bool Nanotec::mapPdos(RxPdoTypeEnum rxPdoTypeEnum, TxPdoTypeEnum txPdoTypeEnum) 
                                   configuration_.configRunSdoVerifyTimeout);
 
       // Write objects...
-      std::array<uint32_t, 5> objects{
+      std::array<uint32_t, 7> objects{
           (OD_INDEX_STATUSWORD << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
           (OD_INDEX_FOLLOWING_ERROR_ACTUAL_VALUE << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
           (OD_INDEX_TORQUE_ACTUAL << 16) | (0x00 << 8) | sizeof(int16_t) * 8,
           (OD_INDEX_VELOCITY_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
           (OD_INDEX_POSITION_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
+          (OD_INDEX_ERROR_CODE << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
+          (OD_INDEX_ERROR_REGISTER << 16) | (0x00 << 8) | sizeof(uint8_t) * 8,
       };
 
       subIndex = 0;
@@ -441,12 +443,14 @@ bool Nanotec::mapPdos(RxPdoTypeEnum rxPdoTypeEnum, TxPdoTypeEnum txPdoTypeEnum) 
                                   configuration_.configRunSdoVerifyTimeout);
 
       // Write objects...
-      std::array<uint32_t, 5> objects{
+      std::array<uint32_t, 7> objects{
           (OD_INDEX_STATUSWORD << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
           (OD_INDEX_TORQUE_DEMAND << 16) | (0x00 << 8) | sizeof(int16_t) * 8,
           (OD_INDEX_TORQUE_ACTUAL << 16) | (0x00 << 8) | sizeof(int16_t) * 8,
           (OD_INDEX_VELOCITY_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
           (OD_INDEX_POSITION_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
+          (OD_INDEX_ERROR_CODE << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
+          (OD_INDEX_ERROR_REGISTER << 16) | (0x00 << 8) | sizeof(uint8_t) * 8,
       };
 
       subIndex = 0;
@@ -488,11 +492,13 @@ bool Nanotec::mapPdos(RxPdoTypeEnum rxPdoTypeEnum, TxPdoTypeEnum txPdoTypeEnum) 
                                   configuration_.configRunSdoVerifyTimeout);
 
       // Write objects...
-      std::array<uint32_t, 4> objects{
+      std::array<uint32_t, 6> objects{
           (OD_INDEX_STATUSWORD << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
           (OD_INDEX_TORQUE_ACTUAL << 16) | (0x00 << 8) | sizeof(int16_t) * 8,
           (OD_INDEX_VELOCITY_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
           (OD_INDEX_POSITION_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
+          (OD_INDEX_ERROR_CODE << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
+          (OD_INDEX_ERROR_REGISTER << 16) | (0x00 << 8) | sizeof(uint8_t) * 8,
       };
 
       subIndex = 0;
@@ -534,13 +540,15 @@ bool Nanotec::mapPdos(RxPdoTypeEnum rxPdoTypeEnum, TxPdoTypeEnum txPdoTypeEnum) 
                                   configuration_.configRunSdoVerifyTimeout);
 
       // Write objects...
-      std::array<uint32_t, 6> objects{
+      std::array<uint32_t, 8> objects{
           (OD_INDEX_STATUSWORD << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
           (OD_INDEX_FOLLOWING_ERROR_ACTUAL_VALUE << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
           (OD_INDEX_TORQUE_DEMAND << 16) | (0x00 << 8) | sizeof(int16_t) * 8,
           (OD_INDEX_TORQUE_ACTUAL << 16) | (0x00 << 8) | sizeof(int16_t) * 8,
           (OD_INDEX_VELOCITY_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
           (OD_INDEX_POSITION_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
+          (OD_INDEX_ERROR_CODE << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
+          (OD_INDEX_ERROR_REGISTER << 16) | (0x00 << 8) | sizeof(uint8_t) * 8,
       };
 
       subIndex = 0;
@@ -583,13 +591,15 @@ bool Nanotec::mapPdos(RxPdoTypeEnum rxPdoTypeEnum, TxPdoTypeEnum txPdoTypeEnum) 
                                   configuration_.configRunSdoVerifyTimeout);
 
       // Write objects...
-      std::array<uint32_t, 6> objects{
+      std::array<uint32_t, 8> objects{
           (OD_INDEX_STATUSWORD << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
           (OD_INDEX_FOLLOWING_ERROR_ACTUAL_VALUE << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
           (OD_INDEX_TORQUE_DEMAND << 16) | (0x00 << 8) | sizeof(int16_t) * 8,
           (OD_INDEX_TORQUE_ACTUAL << 16) | (0x00 << 8) | sizeof(int16_t) * 8,
           (OD_INDEX_VELOCITY_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
           (OD_INDEX_POSITION_ACTUAL << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
+          (OD_INDEX_ERROR_CODE << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
+          (OD_INDEX_ERROR_REGISTER << 16) | (0x00 << 8) | sizeof(uint8_t) * 8,
       };
 
       subIndex = 0;
@@ -633,9 +643,11 @@ bool Nanotec::mapPdos(RxPdoTypeEnum rxPdoTypeEnum, TxPdoTypeEnum txPdoTypeEnum) 
                                   configuration_.configRunSdoVerifyTimeout);
 
       // Write objects...
-      std::array<uint32_t, 2> objects{
+      std::array<uint32_t, 4> objects{
           (OD_INDEX_STATUSWORD << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
           (OD_INDEX_VELOCITY_DEMAND << 16) | (0x00 << 8) | sizeof(int32_t) * 8,
+          (OD_INDEX_ERROR_CODE << 16) | (0x00 << 8) | sizeof(uint16_t) * 8,
+          (OD_INDEX_ERROR_REGISTER << 16) | (0x00 << 8) | sizeof(uint8_t) * 8,
       };
 
       subIndex = 0;

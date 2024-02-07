@@ -31,6 +31,8 @@ struct TxPdoCSP {
   int16_t actualTorque_;
   int32_t actualVelocity_;
   int32_t actualPosition_;
+  uint16_t errorCode_;
+  uint8_t errorRegister_;
 } __attribute__((packed));
 
 struct TxPdoCST {
@@ -39,6 +41,8 @@ struct TxPdoCST {
   int16_t actualTorque_;
   int32_t actualVelocity_;
   int32_t actualPosition_;
+  uint16_t errorCode_;
+  uint8_t errorRegister_;
 } __attribute__((packed));
 
 struct TxPdoCSV {
@@ -46,6 +50,8 @@ struct TxPdoCSV {
   int16_t actualTorque_;
   int32_t actualVelocity_;
   int32_t actualPosition_;
+  uint16_t errorCode_;
+  uint8_t errorRegister_;
 } __attribute__((packed));
 
 // Mixed operation mode for CST and CSP
@@ -56,6 +62,8 @@ struct TxPdoCSTCSP {
   int16_t actualTorque_;
   int32_t actualVelocity_;
   int32_t actualPosition_;
+  uint16_t errorCode_;
+  uint8_t errorRegister_;
 } __attribute__((packed));
 
 // Mixed operation mode for CST, CSP, and CSV
@@ -66,11 +74,15 @@ struct TxPdoCSTCSPCSV {
   int16_t actualTorque_;
   int32_t actualVelocity_;
   int32_t actualPosition_;
+  uint16_t errorCode_;
+  uint8_t errorRegister_;
 } __attribute__((packed));
 
 struct TxPdoPVM {
   uint16_t statusword_;
   int32_t demandVelocity_;
+  uint16_t errorCode_;
+  uint8_t errorRegister_;
 } __attribute__((packed));
 
 }  // namespace nanotec

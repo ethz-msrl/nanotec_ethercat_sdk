@@ -449,6 +449,8 @@ void Nanotec::updateRead() {
         reading_.setActualTorque(txPdo.actualTorque_);
         reading_.setActualVelocity(txPdo.actualVelocity_);
         reading_.setActualPosition(txPdo.actualPosition_);
+        reading_.setErrorCode(txPdo.errorCode_);
+        reading_.setErrorRegister(txPdo.errorRegister_);
       }
       break;
     }
@@ -463,6 +465,8 @@ void Nanotec::updateRead() {
         reading_.setDemandTorque(txPdo.demandTorque_);
         reading_.setActualVelocity(txPdo.actualVelocity_);
         reading_.setActualPosition(txPdo.actualPosition_);
+        reading_.setErrorCode(txPdo.errorCode_);
+        reading_.setErrorRegister(txPdo.errorRegister_);
       }
       break;
     }
@@ -476,6 +480,8 @@ void Nanotec::updateRead() {
         reading_.setActualTorque(txPdo.actualTorque_);
         reading_.setActualVelocity(txPdo.actualVelocity_);
         reading_.setActualPosition(txPdo.actualPosition_);
+        reading_.setErrorCode(txPdo.errorCode_);
+        reading_.setErrorRegister(txPdo.errorRegister_);
       }
       break;
     }
@@ -491,6 +497,8 @@ void Nanotec::updateRead() {
         reading_.setActualTorque(txPdo.actualTorque_);
         reading_.setActualVelocity(txPdo.actualVelocity_);
         reading_.setActualPosition(txPdo.actualPosition_);
+        reading_.setErrorCode(txPdo.errorCode_);
+        reading_.setErrorRegister(txPdo.errorRegister_);
       }
       break;
     }
@@ -506,6 +514,8 @@ void Nanotec::updateRead() {
         reading_.setActualTorque(txPdo.actualTorque_);
         reading_.setActualVelocity(txPdo.actualVelocity_);
         reading_.setActualPosition(txPdo.actualPosition_);
+        reading_.setErrorCode(txPdo.errorCode_);
+        reading_.setErrorRegister(txPdo.errorRegister_);
       }
       break;
     }
@@ -517,6 +527,8 @@ void Nanotec::updateRead() {
         std::lock_guard<std::recursive_mutex> lock(readingMutex_);
         reading_.setDemandVelocity(txPdo.demandVelocity_);
         reading_.setStatusword(txPdo.statusword_);
+        reading_.setErrorCode(txPdo.errorCode_);
+        reading_.setErrorRegister(txPdo.errorRegister_);
       }
       break;
     }
@@ -543,6 +555,11 @@ void Nanotec::updateRead() {
   if (reading_.getDriveState() == DriveState::Fault) {
     MELO_ERROR_STREAM("[nanotec_ethercat_sdk:Nanotec::updateRead] '"
                       << name_ << "' is in drive state 'Fault'");
+    MELO_ERROR_STREAM("[nanotec_ethercat_sdk:Nanotec::updateRead] '"
+                      << name_ << "' Error Code: " << std::hex << reading_.getErrorCode());
+    MELO_ERROR_STREAM("[nanotec_ethercat_sdk:Nanotec::updateRead] '"
+                      << name_ << "' Error Register: " << std::hex << reading_.getErrorRegister());
+
   }
 }
 

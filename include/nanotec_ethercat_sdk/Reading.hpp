@@ -61,6 +61,8 @@ class Reading {
   Statusword getStatusword() const;
   std::string getDigitalInputString() const;
   DriveState getDriveState() const;
+  uint16_t getErrorCode() const;
+  uint8_t getErrorRegister() const;
 
   /*!
    * set methods (only raw)
@@ -93,6 +95,10 @@ class Reading {
 
   void setTorqueFactorIntegerToNm(double torqueFactor);
 
+  void setErrorCode(uint16_t errorCode);
+
+  void setErrorRegister(uint8_t errorRegister);
+
  protected:
   int32_t actualPosition_{0};
   int32_t digitalInputs_{0};
@@ -104,6 +110,8 @@ class Reading {
   uint32_t busVoltage_{0};
   int32_t actualFollowingError_{0};
   uint8_t demandTorque_{0};
+  uint16_t errorCode_{0};
+  uint8_t errorRegister_{0};
 
   double ratedCurrentmA_{0};
   double positionFactorIntegerToRad_{1};
