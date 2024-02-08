@@ -566,16 +566,6 @@ void Nanotec::updateRead() {
 void Nanotec::stageCommand(const Command& command) {
   std::lock_guard<std::recursive_mutex> lock(stagedCommandMutex_);
   stagedCommand_ = command;
-  // stagedCommand_.setPositionFactorRadToInteger(
-  //     static_cast<double>(configuration_.positionEncoderResolution) /
-  //     (2.0 * M_PI));
-
-  // double currentFactorAToInt = 1000.0 / configuration_.ratedCurrentmA;
-  // stagedCommand_.setCurrentFactorAToInteger(currentFactorAToInt);
-  // stagedCommand_.setTorqueFactorNmToInteger(
-  //     1000.0 /
-  //     (configuration_.ratedCurrentmA * configuration_.torqueConstantNmA));
-  // stagedCommand_.doUnitConversion();
 
   const auto targetMode = command.getModeOfOperation();
   if (std::find(configuration_.modesOfOperation.begin(),
