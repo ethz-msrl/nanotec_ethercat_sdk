@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>nanotec_ethercat_sdk</name>
-  <version>1.0.1</version>
+  <version>1.0.0</version>
   <description>Nanotec Ethercat implementation.</description>
   
+  <maintainer email="sneelaksh@ethz.ch">Neelaksh Singh</maintainer>
+  <maintainer email="cehmke@ethz.ch">Claas Ehmke</maintainer>
   <license>BSD-3-Clause</license>
-  <author email="cehmke@student.ethz.ch">Claas Ehmke</author>
-  <maintainer email="cehmke@student.ethz.ch">Claas Ehmke</maintainer>
+  <author email="sneelaksh@ethz.ch">Neelaksh Singh</author>
+  <author email="cehmke@ethz.ch">Claas Ehmke</author>
   <buildtool_depend>catkin</buildtool_depend>
 
   <depend>message_logger</depend>

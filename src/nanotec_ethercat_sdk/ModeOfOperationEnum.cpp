@@ -1,7 +1,7 @@
 // clang-format off
 /*
 ** Copyright (c) 2024, Multi-Scale Robotics Lab ETH Zurich
-** Neelaksh Singh
+** Neelaksh Singh, Claas Ehmke
 **
 ** Copyright (c) 2021, Robotic Systems Lab ETH Zurich
 ** Linghao Zhang, Jonas Junger, Lennart Nachtigall
