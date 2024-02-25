@@ -1,6 +1,9 @@
 // clang-format off
 /*
-** Copyright 2021 Robotic Systems Lab - ETH Zurich:
+** Copyright (c) 2024, Multi-Scale Robotics Lab ETH Zurich
+** Neelaksh Singh
+**
+** Copyright (c) 2021, Robotic Systems Lab ETH Zurich
 ** Linghao Zhang, Jonas Junger, Lennart Nachtigall
 **
 ** Redistribution and use in source and binary forms, with or without
