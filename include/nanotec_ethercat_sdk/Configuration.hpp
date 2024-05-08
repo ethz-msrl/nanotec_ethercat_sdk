@@ -46,9 +46,24 @@ public:
 
     int32_t clockDirectionMultiplier{128};
     int32_t clockDirectionDivider{1};
+
     bool limitSwitchNegativeEn{false};
     bool limitSwitchPositiveEn{false};
     bool limitSwitchHomingEn{false};
+    bool limitSwitchNegativeFunctionInverted{false};
+    bool limitSwitchPositiveFunctionInverted{false};
+    bool limitSwitchHomingFunctionInverted{false};
+
+    int32_t softwarePositionLimitMin{0};
+    int32_t softwarePositionLimitMax{0};
+
+    int32_t positionRangeLimitMin{0};
+    int32_t positionRangeLimitMax{0};
+
+    int32_t gearRatioMotorRevolutions{0};
+    int32_t gearRatioShaftRevolutions{0};
+
+
     uint32_t SIUnitPosition{0xFF410000}; // @brief defaults to `0xFF410000` = tenths of a degree i.e. 3600 = 1 mechanical revolution
     uint32_t SIUnitVelocity{0x00B44700}; // @brief defaults to `0x00B44700` = RPM
 

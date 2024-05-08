@@ -446,6 +446,160 @@ void ConfigurationParser::parseConfiguration(YAML::Node configNode) {
       message += "";
       message += "\033[m\n";
     }
+    
+    bool limitSwitchHomingFunctionInverted;
+    if (getValueFromFile(hardwareNode, "limit_switch_homing_function_inverted", limitSwitchHomingFunctionInverted)) {
+      configuration_.limitSwitchHomingFunctionInverted = limitSwitchHomingFunctionInverted;
+      message += "\033[32m\t";
+      message += "limit_switch_homing_function_inverted = ";
+      message +=  std::to_string(limitSwitchHomingFunctionInverted);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "limit_switch_homing_function_inverted = ";
+      message +=  std::to_string(limitSwitchHomingFunctionInverted);
+      message += "";
+      message += "\033[m\n";
+    }
+    
+    bool limitSwitchPositiveFunctionInverted;
+    if (getValueFromFile(hardwareNode, "limit_switch_positive_function_inverted", limitSwitchPositiveFunctionInverted)) {
+      configuration_.limitSwitchPositiveFunctionInverted = limitSwitchPositiveFunctionInverted;
+      message += "\033[32m\t";
+      message += "limit_switch_positive_function_inverted = ";
+      message +=  std::to_string(limitSwitchPositiveFunctionInverted);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "limit_switch_positive_function_inverted = ";
+      message +=  std::to_string(limitSwitchPositiveFunctionInverted);
+      message += "";
+      message += "\033[m\n";
+    }
+    
+    bool limitSwitchNegativeFunctionInverted;
+    if (getValueFromFile(hardwareNode, "limit_switch_negative_function_inverted", limitSwitchNegativeFunctionInverted)) {
+      configuration_.limitSwitchNegativeFunctionInverted = limitSwitchNegativeFunctionInverted;
+      message += "\033[32m\t";
+      message += "limit_switch_negative_function_inverted = ";
+      message +=  std::to_string(limitSwitchNegativeFunctionInverted);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "limit_switch_negative_function_inverted = ";
+      message +=  std::to_string(limitSwitchNegativeFunctionInverted);
+      message += "";
+      message += "\033[m\n";
+    }
+   
+    int32_t softwarePositionLimitMin;
+    if (getValueFromFile(hardwareNode, "software_position_limit_min", softwarePositionLimitMin)) {
+      configuration_.softwarePositionLimitMin = softwarePositionLimitMin;
+      message += "\033[32m\t";
+      message += "software_position_limit_min = ";
+      message +=  std::to_string(softwarePositionLimitMin);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "software_position_limit_min = ";
+      message +=  std::to_string(configuration_.softwarePositionLimitMin);
+      message += "";
+      message += "\033[m\n";
+    }
+    
+    int32_t softwarePositionLimitMax;
+    if (getValueFromFile(hardwareNode, "software_position_limit_max", softwarePositionLimitMax)) {
+      configuration_.softwarePositionLimitMax = softwarePositionLimitMax;
+      message += "\033[32m\t";
+      message += "software_position_limit_max = ";
+      message +=  std::to_string(softwarePositionLimitMax);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "software_position_limit_max = ";
+      message +=  std::to_string(configuration_.softwarePositionLimitMax);
+      message += "";
+      message += "\033[m\n";
+    }
+
+    int32_t positionRangeLimitMin;
+    if (getValueFromFile(hardwareNode, "position_range_limit_min", positionRangeLimitMin)) {
+      configuration_.positionRangeLimitMin = positionRangeLimitMin;
+      message += "\033[32m\t";
+      message += "position_range_limit_min = ";
+      message +=  std::to_string(positionRangeLimitMin);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "position_range_limit_min = ";
+      message +=  std::to_string(configuration_.positionRangeLimitMin);
+      message += "";
+      message += "\033[m\n";
+    }
+
+    int32_t positionRangeLimitMax;
+    if (getValueFromFile(hardwareNode, "position_range_limit_max", positionRangeLimitMax)) {
+      configuration_.positionRangeLimitMax = positionRangeLimitMax;
+      message += "\033[32m\t";
+      message += "position_range_limit_max = ";
+      message +=  std::to_string(positionRangeLimitMax);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "position_range_limit_max = ";
+      message +=  std::to_string(configuration_.positionRangeLimitMax);
+      message += "";
+      message += "\033[m\n";
+    }
+
+    int32_t gearRatioMotorRevolutions;
+    if (getValueFromFile(hardwareNode, "gear_ratio_motor_revolutions", gearRatioMotorRevolutions)) {
+      configuration_.gearRatioMotorRevolutions = gearRatioMotorRevolutions;
+      message += "\033[32m\t";
+      message += "gear_ratio_motor_revolutions = ";
+      message +=  std::to_string(gearRatioMotorRevolutions);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "gear_ratio_motor_revolutions = ";
+      message +=  std::to_string(configuration_.gearRatioMotorRevolutions);
+      message += "";
+      message += "\033[m\n";
+    }
+    
+    int32_t gearRatioShaftRevolutions;
+    if (getValueFromFile(hardwareNode, "gear_ratio_shaft_revolutions", gearRatioShaftRevolutions)) {
+      configuration_.gearRatioShaftRevolutions = gearRatioShaftRevolutions;
+      message += "\033[32m\t";
+      message += "gear_ratio_shaft_revolutions = ";
+      message +=  std::to_string(gearRatioShaftRevolutions);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "gear_ratio_shaft_revolutions = ";
+      message +=  std::to_string(configuration_.gearRatioShaftRevolutions);
+      message += "";
+      message += "\033[m\n";
+    }
+    
 
     uint32_t SIUnitPosition;
     if (getValueFromFile(hardwareNode, "position_unit", SIUnitPosition)) {
