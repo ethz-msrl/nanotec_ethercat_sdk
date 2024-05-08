@@ -803,14 +803,72 @@ bool Nanotec::configParam() {
   MELO_INFO("-->      Set OD_INDEX_CLOCK_DIRECTION_DIVIDER = %i", configuration_.clockDirectionDivider);
 
 
-  //write digitalInputsControl
+  //write digitalInputsControl - enable pins
   uint32_t specialFunctionsEnable = ((uint32_t)configuration_.limitSwitchNegativeEn | ((uint32_t) configuration_.limitSwitchPositiveEn<<1) | ((uint32_t) configuration_.limitSwitchHomingEn<<2));
   configSuccess &= sdoVerifyWrite(OD_INDEX_DIGITAL_INPUT_CONTROL, 0x01, false, specialFunctionsEnable, configuration_.configRunSdoVerifyTimeout);
   if (!configSuccess) {
-    MELO_ERROR("Failed set OD_INDEX_DIGITAL_INPUT_CONTROL.");
+    MELO_ERROR("Failed set OD_INDEX_DIGITAL_INPUT_CONTROL:1.");
     return configSuccess;
   }
-  MELO_INFO("-->      Set OD_INDEX_DIGITAL_INPUT_CONTROL = %u", specialFunctionsEnable);
+  MELO_INFO("-->      Set OD_INDEX_DIGITAL_INPUT_CONTROL:1 = %u", specialFunctionsEnable);
+
+  //write digitalInputsControl - function inverted
+  uint32_t functionInverted = ((uint32_t)configuration_.limitSwitchNegativeFunctionInverted | ((uint32_t) configuration_.limitSwitchPositiveFunctionInverted<<1) | ((uint32_t) configuration_.limitSwitchHomingFunctionInverted<<2));
+  configSuccess &= sdoVerifyWrite(OD_INDEX_DIGITAL_INPUT_CONTROL, 0x02, false, functionInverted, configuration_.configRunSdoVerifyTimeout);
+  if (!configSuccess) {
+    MELO_ERROR("Failed set OD_INDEX_DIGITAL_INPUT_CONTROL:2.");
+    return configSuccess;
+  }
+  MELO_INFO("-->      Set OD_INDEX_DIGITAL_INPUT_CONTROL:2 = %u", functionInverted);
+
+  //write software position limit - negative
+  configSuccess &= sdoVerifyWrite(OD_INDEX_SOFTWARE_POSITION_LIMIT, 0x01, false, configuration_.softwarePositionLimitMin, configuration_.configRunSdoVerifyTimeout);
+  if (!configSuccess) {
+    MELO_ERROR("Failed set OD_INDEX_SOFTWARE_POSITION_LIMIT.");
+    return configSuccess;
+  }
+  MELO_INFO("-->      Set OD_INDEX_SOFTWARE_POSITION_LIMIT = %i", configuration_.softwarePositionLimitMin);
+
+  //write software position limit - positive
+  configSuccess &= sdoVerifyWrite(OD_INDEX_SOFTWARE_POSITION_LIMIT, 0x02, false, configuration_.softwarePositionLimitMax, configuration_.configRunSdoVerifyTimeout);
+  if (!configSuccess) {
+    MELO_ERROR("Failed set OD_INDEX_SOFTWARE_POSITION_LIMIT.");
+    return configSuccess;
+  }
+  MELO_INFO("-->      Set OD_INDEX_SOFTWARE_POSITION_LIMIT = %i", configuration_.softwarePositionLimitMax);
+
+  //write position range limit - negative
+  configSuccess &= sdoVerifyWrite(OD_INDEX_POSITION_RANGE_LIMIT, 0x01, false, configuration_.positionRangeLimitMin, configuration_.configRunSdoVerifyTimeout);
+  if (!configSuccess) {
+    MELO_ERROR("Failed set OD_INDEX_POSITION_RANGE_LIMIT.");
+    return configSuccess;
+  }
+  MELO_INFO("-->      Set OD_INDEX_POSITION_RANGE_LIMIT = %i", configuration_.positionRangeLimitMin);
+
+    //write position range limit - positive
+  configSuccess &= sdoVerifyWrite(OD_INDEX_POSITION_RANGE_LIMIT, 0x02, false, configuration_.positionRangeLimitMax, configuration_.configRunSdoVerifyTimeout);
+  if (!configSuccess) {
+    MELO_ERROR("Failed set OD_INDEX_POSITION_RANGE_LIMIT.");
+    return configSuccess;
+  }
+  MELO_INFO("-->      Set OD_INDEX_POSITION_RANGE_LIMIT = %i", configuration_.positionRangeLimitMax);
+
+
+  //write gear ratio motor revolutions
+  configSuccess &= sdoVerifyWrite(OD_INDEX_GEAR_RATIO, 0x01, false, configuration_.gearRatioMotorRevolutions, configuration_.configRunSdoVerifyTimeout);
+  if (!configSuccess) {
+    MELO_ERROR("Failed set OD_INDEX_GEAR_RATIO.");
+    return configSuccess;
+  }
+  MELO_INFO("-->      Set OD_INDEX_GEAR_RATIO = %i", configuration_.gearRatioMotorRevolutions);
+
+  //write gear ratio shaft revolutions
+  configSuccess &= sdoVerifyWrite(OD_INDEX_GEAR_RATIO, 0x02, false, configuration_.gearRatioShaftRevolutions, configuration_.configRunSdoVerifyTimeout);
+  if (!configSuccess) {
+    MELO_ERROR("Failed set OD_INDEX_GEAR_RATIO.");
+    return configSuccess;
+  }
+  MELO_INFO("-->      Set OD_INDEX_GEAR_RATIO = %i", configuration_.gearRatioShaftRevolutions);
 
   ///////////////////////////HOMING
   MELO_INFO("         [HOMING]");
