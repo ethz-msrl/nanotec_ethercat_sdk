@@ -97,6 +97,7 @@ bool Nanotec::startup() {
                             static_cast<int8_t>(ModeOfOperationEnum::NA),
                             configuration_.configRunSdoVerifyTimeout);
 
+
   // To be on the safe side: set currect PDO sizes
   autoConfigurePdoSizes();
   // write the configuration parameters via Sdo

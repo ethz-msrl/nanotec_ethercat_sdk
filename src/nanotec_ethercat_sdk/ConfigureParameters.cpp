@@ -937,6 +937,14 @@ bool Nanotec::configParam() {
                             configuration_.SIUnitVelocity,
                             configuration_.configRunSdoVerifyTimeout);
 
+  configSuccess &= sdoVerifyWrite(OD_INDEX_FEED_CONSTANT, 0x01, false,
+                            configuration_.feedconstantFeed,
+                            configuration_.configRunSdoVerifyTimeout);
+
+  configSuccess &= sdoVerifyWrite(OD_INDEX_FEED_CONSTANT, 0x02, false,
+                            configuration_.feedconstantShaftRevolutions,
+                            configuration_.configRunSdoVerifyTimeout);
+
   if(configSuccess){ MELO_INFO("[nanotec_ethercat_sdk::Nanotec::ConfigParam] Configuration parameters written successfully."); }
   else { MELO_ERROR("[nanotec_ethercat_sdk::Nanotec::ConfigParam] Configuration parameters could not be written successfully."); }
 
