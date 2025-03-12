@@ -66,7 +66,9 @@ public:
 
     uint32_t SIUnitPosition{0xFF410000}; // @brief defaults to `0xFF410000` = tenths of a degree i.e. 3600 = 1 mechanical revolution
     uint32_t SIUnitVelocity{0x00B44700}; // @brief defaults to `0x00B44700` = RPM
-
+    uint32_t feedconstantFeed{0x00000001};
+    uint32_t feedconstantShaftRevolutions{0x00000001};
+    
     // Motor type params
     uint32_t encoderConfiguration{0}; // Bit 1: 0 (0: Differential encoder; 1: Single-Ended encoder)
     

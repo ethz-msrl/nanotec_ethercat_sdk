@@ -634,6 +634,42 @@ void ConfigurationParser::parseConfiguration(YAML::Node configNode) {
       message += "";
       message += "\033[m\n";
     }
+
+    uint32_t feedconstantFeed;
+    if (getValueFromFile(hardwareNode, "feedconstantFeed", feedconstantFeed)) {
+      configuration_.feedconstantFeed = feedconstantFeed;
+      message += "\033[32m\t";
+      message += "feedconstantFeed = ";
+      message +=  std::to_string(feedconstantFeed);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "feedconstantFeed = ";
+      message +=  std::to_string(configuration_.feedconstantFeed);
+      message += "";
+      message += "\033[m\n";
+    }
+
+    uint32_t feedconstantShaftRevolutions;
+    if (getValueFromFile(hardwareNode, "feedconstantShaftRevolutions", feedconstantShaftRevolutions)) {
+      configuration_.feedconstantShaftRevolutions = feedconstantShaftRevolutions;
+      message += "\033[32m\t";
+      message += "feedconstantShaftRevolutions = ";
+      message +=  std::to_string(feedconstantShaftRevolutions);
+      message += "";
+      message += "\033[m\n";
+    } else
+    {
+      message += "\033[31m\t";
+      message += "feedconstantShaftRevolutions = ";
+      message +=  std::to_string(configuration_.feedconstantShaftRevolutions);
+      message += "";
+      message += "\033[m\n";
+    }
+
+
   }
 
   

@@ -97,6 +97,7 @@ bool Nanotec::startup() {
                             static_cast<int8_t>(ModeOfOperationEnum::NA),
                             configuration_.configRunSdoVerifyTimeout);
 
+
   // To be on the safe side: set currect PDO sizes
   autoConfigurePdoSizes();
   // write the configuration parameters via Sdo
@@ -119,7 +120,8 @@ bool Nanotec::startup() {
   int32_t current_position;
   readSuccess &= sendSdoRead(OD_INDEX_POSITION_ACTUAL, 0, false, current_position);
   stagedCommand_.setTargetPositionRaw(current_position);
-  reading_.setActualPosition(current_position);
+  // reading_.setActualPosition(current_position);
+  reading_.setActualPosition(0); 
   stagedCommand_.setPositionOffsetRaw(0);
   /* Velocity and Torque zeroed at startup, uncomment to hold at startup */
   // int32_t current_velocity;
@@ -145,7 +147,7 @@ bool Nanotec::startup() {
 
   if(configuration_.homingEn)
   {
-    success &= homing();
+    success &= homing();   
   }
 
   if (!success) {
